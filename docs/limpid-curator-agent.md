@@ -33,7 +33,7 @@
 
 **Location**: `.claude/agents/curator.md`
 
-```markdown
+````markdown
 ---
 name: Curator
 description: Optional orchestrator for LimpidAI context system. Use for complex workflows, intelligent command chaining, and token-optimized writing. Automatically invoked by Claude Code for large file changes or feature discussions. Can invoke /limpid:probe, /limpid:curate, and /limpid:assimilate via SlashCommand tool.
@@ -175,6 +175,9 @@ I'm going to check what changed by running the probe command.
 Now I'll validate the structure to make sure everything is correct.
 After that, I'll update the documentation files with the changes.
 ```
+````
+
+---
 
 ## Command Chaining Patterns
 

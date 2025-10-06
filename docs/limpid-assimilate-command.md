@@ -37,7 +37,7 @@ Extract knowledge from conversation and write token-efficient context files usin
 
 **Location**: `.claude/commands/limpid/assimilate.md`
 
-```markdown
+````markdown
 ---
 description: Extract knowledge and write context with guided intelligence
 argument-hint: [feature-name] [refinement]
@@ -231,7 +231,7 @@ Report:
 - Cross-references added
 - Token efficiency (line counts)
 - Verification performed
-```
+````
 
 ---
 
@@ -497,7 +497,7 @@ Please clarify before continuing.
 
 **Example Output**:
 
-```markdown
+````markdown
 # Auth Architecture
 
 **Method**: JWT (RS256, httpOnly cookies)
@@ -524,11 +524,11 @@ Request → Extract JWT → Validate → Check Redis → Allow/Deny
 - User model: See domain/user.md
 
 **Lines**: 156 (within target)
-```
+````
 
 ### vs Verbose
 
-```markdown
+````markdown
 # Authentication Architecture
 
 Authentication is a critical part of our application that allows users 
@@ -541,7 +541,7 @@ stateless authentication. The token contains claims about the user
 which are encoded in base64...
 
 [continues for 847 lines]
-```
+````
 
 **LimpidAI**: 5.4x more efficient
 

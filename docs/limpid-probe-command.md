@@ -34,7 +34,7 @@ Discover codebase structure and analyze patterns to produce intelligent guided a
 
 **Location**: `.claude/commands/limpid/probe.md`
 
-```markdown
+````markdown
 ---
 description: Discover codebase with intelligent pattern analysis
 argument-hint: [--quiet | focus-area]
@@ -337,7 +337,7 @@ If cache exists, compare with current state:
     "by_extension": {"ts": 120, "tsx": 45}
   }
 }
-```
+````
 
 ---
 

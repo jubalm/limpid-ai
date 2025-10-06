@@ -34,7 +34,7 @@ Install SPEC.md framework, create/validate directory structure, maintain organiz
 
 **Location**: `.claude/commands/limpid/curate.md`
 
-```markdown
+````markdown
 ---
 description: Organize structure with SPEC management
 argument-hint: [natural-language-instruction]
@@ -151,7 +151,7 @@ Report:
 - Structure created/validated
 - Issues found (if any)
 - Recommendations
-```
+````
 
 ---
 
@@ -186,7 +186,7 @@ Report:
 
 **Example Web-App SPEC**:
 
-```markdown
+````markdown
 # LimpidAI Framework Specification
 ## Web Application (Feature-Based)
 
@@ -273,7 +273,7 @@ See: architecture/patterns.md
 Related: features/auth/architecture.md
 Depends: domain/concepts.md#user-model
 ```
-```
+````
 
 ---
 
