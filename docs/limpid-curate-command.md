@@ -34,124 +34,22 @@ Install SPEC.md framework, create/validate directory structure, maintain organiz
 
 **Location**: `.claude/commands/limpid/curate.md`
 
-````markdown
----
-description: Organize structure with SPEC management
-argument-hint: [natural-language-instruction]
-allowed-tools: Bash(test:*), Bash(find:*), Read, Write, CreateFile, StrReplace
----
+**Key Configuration**:
+- **Arguments**: `[natural-language-instruction]`
+- **Tools**: `Bash(test:*)`, `Bash(find:*)`, `Read`, `Write`, `CreateFile`, `StrReplace`
+- **Approach**: Probe-aware SPEC installation and structure validation
+- **Prerequisites**: Suggests `/limpid:probe` if cache missing
 
-# LimpidAI Curate - Organization & Structure
+**Supported Intents** (natural language):
+- SPEC modifications: "add deployment section", "migrate to API framework"
+- Structure operations: "validate", "optimize", "reorganize"
+- Template updates: "update requirements template with X"
 
-Install SPEC.md, create structure, maintain organization.
-
-## Check Prerequisites
-
-Probe cache: !`test -f .cache/limpid/probe.json && echo "exists" || echo "missing"`
-
-**If missing**: Suggest "Run `/limpid:probe` first for optimal setup."
-
-## Load Probe Artifact
-
-Read cache: !`cat .cache/limpid/probe.json 2>/dev/null`
-
-**Key information**:
-- `project.type` and `project.architecture`
-- `tech_stack` details
-- `code_map` for structure understanding
-- `gaps.undocumented_features`
-
-## Natural Language Intent Parsing
-
-Parse $ARGUMENTS for user intent:
-
-### SPEC Modifications
-- "add X section" → Extend SPEC structure
-- "remove Y from templates" → Edit SPEC templates
-- "migrate to Z framework" → Replace SPEC entirely
-
-### Structure Operations
-- "validate" → Check compliance only
-- "optimize" → Token-compress existing docs
-- "reorganize" → Restructure per SPEC
-
-### Template Updates
-- "update X template with Y" → Modify specific template
-
-## Standard Curation (No specific intent)
-
-### 1. Determine Framework
-
-Based on probe artifact:
-
-**Web App + Feature-based**:
-```
-features/[name]/
-  ├── requirements.md
-  ├── architecture.md
-  └── decisions.md
-architecture/
-  └── patterns.md
-```
-
-**API + Layered**:
-```
-api/
-  ├── endpoints.md
-  └── contracts.md
-services/[name]/
-  └── architecture.md
-data/
-  └── models.md
-```
-
-**Mobile**:
-```
-screens/[name]/
-  └── requirements.md
-components/[name]/
-  └── design.md
-navigation/
-  └── flow.md
-```
-
-### 2. Bootstrap (If no LimpidAI)
-
-Create:
-- `.claude/context/` directory
-- `SPEC.md` (chosen framework)
-- `README.md` (system documentation)
-- Directory structure per SPEC
-
-### 3. Validate (If LimpidAI exists)
-
-Check:
-- Structure matches SPEC?
-- Missing directories?
-- Oversized files (>300 lines)?
-- Token optimization needed?
-
-### 4. Maintain
-
-- Optimize verbose docs (>300 lines)
-- Add missing sections
-- Fix broken cross-references
-- Ensure 50-200 line targets
-
-## User Instruction
-$ARGUMENTS
-
-## Output
-
-Report:
-- Probe cache status
-- Intent understood (if natural language)
-- Framework selected/validated
-- Actions taken
-- Structure created/validated
-- Issues found (if any)
-- Recommendations
-````
+**Standard Operations**:
+1. Determine framework based on probe artifact (web-app, API, mobile)
+2. Bootstrap structure (if no LimpidAI) or validate (if exists)
+3. Create/update `.claude/CLAUDE.md` bootstrap file
+4. Maintain token efficiency (50-200 lines per file)
 
 ---
 

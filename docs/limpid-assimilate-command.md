@@ -37,201 +37,28 @@ Extract knowledge from conversation and write token-efficient context files usin
 
 **Location**: `.claude/commands/limpid/assimilate.md`
 
-````markdown
----
-description: Extract knowledge and write context with guided intelligence
-argument-hint: [feature-name] [refinement]
----
+**Key Configuration**:
+- **Arguments**: `[feature-name] [refinement]`
+- **Tools**: File operations (`Read`, `Write`, `Edit`)
+- **Approach**: Probe-guided knowledge extraction from conversation
+- **Prerequisites**: Suggests `/limpid:curate` if SPEC missing
 
-# LimpidAI Assimilate - Knowledge Writing
+**Supported Intents** (natural language):
+- Feature extraction: "auth", "auth 'focus on security'"
+- Bulk operations: "regenerate all feature docs"
+- Targeted updates: "add testing section to auth"
+- Token optimization: "condense X to <200 lines"
 
-Extract conversation knowledge and write token-efficient context files.
+**Extraction Process**:
+1. Read conversation history (filter noise, extract knowledge)
+2. Apply guided intelligence using probe artifact
+3. Verify against probe (prevent hallucination)
+4. Determine target files (create vs update)
+5. Write token-efficiently (50-200 lines, dense structure)
+6. Add cross-references (from probe relationships)
+7. Validate (SPEC compliance, no duplication)
 
-## Check Prerequisites
-
-SPEC exists: !`test -f .claude/context/SPEC.md && echo "exists" || echo "missing"`
-
-**If missing**: Suggest "Run `/limpid:curate` first to set up structure."
-
-## Load Guided Map (Probe Artifact)
-
-Read probe cache: !`cat .cache/limpid/probe.json 2>/dev/null`
-
-**Critical**: This is the guided map that prevents hallucination.
-
-**What it provides**:
-- `code_map.features` - Where code lives, what it exports
-- `relationships` - Dependencies and cross-references
-- `packages.dependencies` - What tech actually exists
-- `changes_since_last` - What needs updating
-- `gaps.undocumented_features` - Priority list
-
-## Natural Language Intent Parsing
-
-Parse $ARGUMENTS for intent:
-
-### Feature with Refinement
-- "feature-name 'focus on X'" → Extract with specific focus
-- "feature-name 'update with Y'" → Merge with existing docs
-- "feature-name" → Standard full extraction
-
-### Bulk Operations
-- "regenerate all X" → Rewrite multiple files
-- "condense X to <N lines" → Token-compress specific docs
-
-### Specific Updates
-- "add X section to Y" → Targeted addition
-- "document the X patterns" → Extract specific topic
-
-### Standard Extraction
-- "feature-name" → Full feature documentation
-- (empty) → Extract everything relevant from conversation
-
-## Extraction Process
-
-### 1. Read Conversation History
-
-Extract from current conversation:
-- **Requirements**: User stories, acceptance criteria
-- **Architecture**: Technical design, components, data flow
-- **Decisions**: Choices made, rationale, alternatives, trade-offs
-- **API**: Endpoints, contracts, data models
-- **Domain**: Business rules, terminology
-
-Filter out:
-- Tangents and casual chat
-- Iteration noise (multiple versions of same idea)
-- Meta-discussion about documentation itself
-
-### 2. Apply Guided Intelligence
-
-**Use probe artifact to guide**:
-
-```json
-// Conversation mentions "auth"
-
-// Read probe.json:
-"code_map.features.auth": {
-  "location": "src/auth/",
-  "files": ["login.ts", "middleware.ts"],
-  "exports": ["login", "validateToken", "authMiddleware"],
-  "imports_from": ["utils/hash", "prisma/client"],
-  "tests": ["tests/auth/login.test.ts"]
-}
-
-// Use this to write accurate docs:
-// - Mention specific files: login.ts, middleware.ts
-// - Document exports: login, validateToken functions
-// - Cross-ref dependencies: utils/hash, prisma client
-// - Note tests exist
-```
-
-### 3. Verify Against Probe
-
-**Prevent hallucination**:
-
-```
-Conversation mentions "Redis for sessions"
-
-Check probe.json:
-  "packages.dependencies": {
-    // ... no Redis
-  }
-
-Action: "Redis mentioned but not in dependencies. Add package first?"
-```
-
-**Verify**:
-- Tech mentioned exists in `packages`
-- Files referenced exist in `code_map`
-- Dependencies accurate per `relationships`
-
-### 4. Determine Target Files
-
-Read SPEC.md structure:
-
-```
-features/[name]/
-  ├── requirements.md
-  ├── architecture.md
-  └── decisions.md
-```
-
-Check probe for existing docs:
-
-```json
-"code_map.features.auth": {
-  "existing_docs": null  // Create new
-}
-
-"code_map.features.payments": {
-  "existing_docs": "features/payments/architecture.md"  // Update existing
-}
-```
-
-**Decision**:
-- No existing docs → Create new files
-- Existing docs → Update/merge
-
-### 5. Write Token-Efficiently
-
-**Principles**:
-- Dense, structured (bullets, tables, key:value)
-- Assume AI knowledge (no concept explanations)
-- Project-specific only (YOUR implementation)
-- 50-200 lines per file
-- Cross-reference, never duplicate
-
-**Template adherence**:
-Follow SPEC.md templates for consistency
-
-**Apply refinements**:
-If $ARGUMENTS has refinement ("focus on security"), prioritize that aspect
-
-### 6. Add Cross-References
-
-**Use relationships from probe**:
-
-```json
-"relationships": {
-  "src/auth/login.ts": {
-    "depends_on": ["utils/hash.ts", "prisma/client"],
-    "should_document_with": ["features/auth/"]
-  }
-}
-```
-
-**Write**:
-```markdown
-# Auth Architecture
-
-## Dependencies
-- Password hashing: See architecture/shared.md#hashing
-- User model: See domain/user.md
-```
-
-### 7. Validate
-
-Check:
-- SPEC compliance (files in right locations)
-- Cross-references valid (linked files exist)
-- No content duplication
-- Token efficiency (50-200 line target)
-
-## Feature/Instructions
-$ARGUMENTS
-
-## Output
-
-Report:
-- Intent understood
-- Probe guidance used (what was verified)
-- Files created/updated (with paths)
-- Knowledge extracted (categories)
-- Cross-references added
-- Token efficiency (line counts)
-- Verification performed
-````
+**The Guided Map Advantage**: Uses probe artifact to know exact file locations, real exports, actual dependencies - prevents guessing and hallucination.
 
 ---
 
