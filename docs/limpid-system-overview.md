@@ -276,6 +276,24 @@ See: `limpid-curator-agent.md`
 
 ---
 
+### CLAUDE.md (`.claude/CLAUDE.md`)
+
+**Purpose**: Bootstrap file for auto-loading context system
+
+**Contains**:
+```markdown
+@context/SPEC.md
+@context/README.md
+```
+
+**Used by**: Claude Code's memory system (auto-loads at session startup)
+
+**Provides**: Complete context map and management commands without loading all content
+
+**Created/Updated by**: Curate during setup and structure changes
+
+---
+
 ## Token Efficiency
 
 ### The Problem

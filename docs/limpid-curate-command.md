@@ -277,6 +277,22 @@ Depends: domain/concepts.md#user-model
 
 ---
 
+### 2.5. Creates/Updates CLAUDE.md Bootstrap
+
+Creates or updates `.claude/CLAUDE.md` to auto-load context system in every session:
+
+```markdown
+@context/SPEC.md
+@context/README.md
+```
+
+This gives Claude:
+- Complete context structure map (from SPEC)
+- Management command knowledge (from README)
+- Intelligent context navigation without loading all files
+
+---
+
 ### 3. Creates Directory Structure
 
 ```bash

@@ -221,6 +221,15 @@ This directory contains AI-optimized context documentation for this project.
 All documents target 50-200 lines for optimal AI consumption.
 ```
 
+7. Create or update .claude/CLAUDE.md:
+   - If missing: Create with imports
+   - If exists: Ensure imports are present
+   ```markdown
+   @context/SPEC.md
+   @context/README.md
+   ```
+   This ensures context system auto-loads in future sessions.
+
 ### If LimpidAI exists (`has_limpid == true`)
 
 **Validation operations**:
@@ -283,6 +292,7 @@ Framework selected: [framework-name]
 Created:
   ✓ .claude/context/SPEC.md
   ✓ .claude/context/README.md
+  ✓ .claude/CLAUDE.md (created/updated)
   ✓ .claude/context/project/
   ✓ .claude/context/architecture/
   ✓ .claude/context/features/
