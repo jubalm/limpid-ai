@@ -1,0 +1,28 @@
+{
+  "name": "limpid-ai",
+  "version": "0.0.0",
+  "description": "Lightweight, intelligent context management system for Claude Code",
+  "bin": {
+    "limpid-ai": "./bin/limpid-ai.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jubalm/limpid-ai.git"
+  },
+  "keywords": [
+    "claude-code",
+    "context-management",
+    "ai",
+    "documentation",
+    "codebase-analysis"
+  ],
+  "author": "Jubal Mabaquiao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jubalm/limpid-ai/issues"
+  },
+  "homepage": "https://github.com/jubalm/limpid-ai#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

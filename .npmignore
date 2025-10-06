@@ -1,0 +1,17 @@
+# Documentation (available on GitHub)
+docs/
+CHANGELOG.md
+
+# Git files
+.git/
+.gitignore
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cache
+.cache/

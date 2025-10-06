@@ -1,6 +1,6 @@
 # LimpidAI Assimilate Command
 **Command**: `/limpid:assimilate`  
-**Version**: 2.0.0
+**Version**: 0.0.0
 
 ---
 

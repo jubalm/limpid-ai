@@ -1,6 +1,6 @@
 # LimpidAI Curate Command
 **Command**: `/limpid:curate`  
-**Version**: 2.0.0
+**Version**: 0.0.0
 
 ---
 
