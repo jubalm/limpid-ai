@@ -234,9 +234,14 @@ Build a JSON artifact with the following structure:
 ## Output Formatting
 
 ### If `--quiet` in arguments (Agent Mode):
-- Output ONLY the JSON artifact content
-- No explanations, no verbose text
-- Just the raw JSON for agent consumption
+
+Don't output the JSON artifact (it's already saved to file for reading).
+
+```
+✓ Probe complete. Artifact saved to `.cache/limpid/probe.json`
+
+Recommended next step: `/limpid:curate` to set up structure
+```
 
 ### Otherwise (User Mode):
 Present a friendly summary:
@@ -276,4 +281,4 @@ Cache saved: .cache/limpid/probe.json
 6. Output in appropriate format based on `$ARGUMENTS` mode
 7. If errors occur during discovery, handle gracefully and note in artifact
 
-Focus on accuracy and completeness. The probe artifact is the foundation for curate and assimilate commands.
+Focus on thorough execution and accuracy. The probe artifact provides foundational information for curate and assimilate commands.

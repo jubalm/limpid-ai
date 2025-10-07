@@ -362,6 +362,6 @@ Structure updated.
 6. If validating: Check compliance, report issues
 7. If natural language: Parse intent and execute appropriate operations
 8. Handle edge cases gracefully (missing directories, permissions, etc.)
-9. Output clear status with next steps
+9. Output clear status with recommended next steps
 
-Focus on creating a clean, token-efficient structure that follows the SPEC principles.
+Create a clean, token-efficient structure following SPEC principles.
